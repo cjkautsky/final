@@ -1,4 +1,19 @@
-google_key = ENV["GOOGLE_MAPS_API_KEY"]
-pp google_key
-hi = "hello".delete_prefix('"').delete_suffix('"')
-pp hi
+# Set up for the application and database. DO NOT CHANGE. #############################
+require "sinatra"                                                                     #
+require "sinatra/reloader" if development?                                            #
+require "sequel"                                                                      #
+require "logger"                                                                      #
+require "twilio-ruby"                                                                 #
+require "bcrypt"                                                                      #
+connection_string = ENV['DATABASE_URL'] || "sqlite://#{Dir.pwd}/development.sqlite3"  #
+DB ||= Sequel.connect(connection_string)                                              #
+DB.loggers << Logger.new($stdout) unless DB.loggers.size > 0                          #
+def view(template); erb template.to_sym; end                                          #
+use Rack::Session::Cookie, key: 'rack.session', path: '/', secret: 'secret'           #
+before { puts; puts "--------------- NEW REQUEST ---------------"; puts }             #
+after { puts; }                                                                       #
+#######################################################################################
+
+courses_table = DB.from(:course)
+course = "Pebble Beach"
+puts courses_table.where(name: course).to_a[0][:id]

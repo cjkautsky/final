@@ -43,7 +43,7 @@
     color: rgb(192,192,192);
 }
 
-.btn {
+.user {
     margin-left: 165px;
 }
 
@@ -53,4 +53,13 @@
 
 .nav-sub {
     color: black;
+}
+
+.center {
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+    font-size: 18px;
 }

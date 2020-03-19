@@ -1,0 +1,47 @@
+<h1 class="container mt-5 center">Score Entry</h1>
+
+<form action="/rounds/create_round" method="post">
+  
+  <div class="container mt-5">
+    <div class="row">
+        <div class="form-group col-6">
+            <label>Course</label>
+            <input type="text" class="form-control" list="courses" name="course">
+
+            <datalist id="courses">
+            <option value="Augusta National">
+            <option value="Pebble Beach">
+            </datalist>
+        </div>
+
+
+        <div class="form-group col-6">
+            <label>Score</label>
+            <input type="integer" class="form-control" name="score">
+        </div>
+    </div>
+  </div>
+
+  <div class="container-fluid mt-5 center">
+    <p class="bold">Don't see your course?</p>
+    <a class="btn btn-primary" href="/" role="button">Add Course</a>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row">
+        <div class="form-group col-6">
+            <label>Tees</label>
+            <input type="text" class="form-control" name="tees">
+        </div>
+        <div class="form-group col-6">
+            <label>Date</label>
+            <input type="text" class="form-control" name="date">
+        </div>
+    </div>
+  </div>
+
+  <div class="container-fluid center">
+    <button type="submit" class="btn btn-success">Submit Round</button>
+  </div>
+</form>
+
