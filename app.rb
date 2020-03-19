@@ -27,6 +27,18 @@ get "/users/new" do
     view "new_user"
 end
 
+get "/rounds/new_round" do
+    view "new_round"
+end
+
+get "/rounds/create_round" do
+    view "create_round"
+end
+
+get "/rounds/filtered_leaderboard" do
+    view "filtered_leaderboard"
+end
+
 # receive the submitted signup form (aka "create")
 post "/users/create" do
     puts "params: #{params}"

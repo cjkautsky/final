@@ -42,3 +42,15 @@
 .nav-link {
     color: rgb(192,192,192);
 }
+
+.btn {
+    margin-left: 165px;
+}
+
+#data_entry {
+    color: lightblue;
+}
+
+.nav-sub {
+    color: black;
+}
