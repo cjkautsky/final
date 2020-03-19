@@ -5,31 +5,34 @@ DB = Sequel.connect(connection_string)                                          
 #######################################################################################
 
 # Database schema - this should reflect your domain model
-DB.create_table! :events do
+DB.create_table! :courses do
   primary_key :id
-  String :title
-  String :description, text: true
-  String :date
-  String :location
+  String :name
+  String :city
+  String :state
 end
-DB.create_table! :rsvps do
+DB.create_table! :rounds do
   primary_key :id
-  foreign_key :event_id
-  Boolean :going
+  foreign_key :course_id
+  foreign_key :round_id
+  Integer :score
+  String :tees
+  Integer :date
+end
+DB.create_table! :users do
+  primary_key :id
   String :name
   String :email
-  String :comments, text: true
+  String :password
 end
 
 # Insert initial (seed) data
-events_table = DB.from(:events)
+courses_table = DB.from(:courses)
 
-events_table.insert(title: "Bacon Burger Taco Fest", 
-                    description: "Here we go again bacon burger taco fans, another Bacon Burger Taco Fest is here!",
-                    date: "June 21",
-                    location: "Kellogg Global Hub")
+courses_table.insert(name: "The Legacy Golf Club", 
+                    city: "Phoenix",
+                    state: "AZ")
 
-events_table.insert(title: "Kaleapolooza", 
-                    description: "If you're into nutrition and vitamins and stuff, this is the event for you.",
-                    date: "July 4",
-                    location: "Nowhere")
+courses_table.insert(name: "Troon North Golf Club", 
+                    city: "Scottsdale",
+                    state: "AZ")
