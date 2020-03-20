@@ -4,7 +4,8 @@ require "sinatra/reloader" if development?                                      
 require "sequel"                                                                      #
 require "logger"                                                                      #
 require "twilio-ruby"                                                                 #
-require "bcrypt"                                                                      #
+require "bcrypt"
+require "geocoder"                                                                      #
 connection_string = ENV['DATABASE_URL'] || "sqlite://#{Dir.pwd}/development.sqlite3"  #
 DB ||= Sequel.connect(connection_string)                                              #
 DB.loggers << Logger.new($stdout) unless DB.loggers.size > 0                          #
@@ -65,6 +66,11 @@ end
 # display the course entry form (aka "new")
 get "/courses/new_course" do
     view "new_course"
+end
+
+# receive the submitted course form (aka "create")
+post "/courses/course_check" do
+    view "course_check"
 end
 
 # receive the submitted course form (aka "create")
