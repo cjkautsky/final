@@ -7,7 +7,8 @@ DB = Sequel.connect(connection_string)                                          
 # Database schema - this should reflect your domain model
 DB.create_table! :courses do
   primary_key :id
-  String :name
+  String :lat_lng, text: true 
+  String :name, text: true
   String :city
   String :state
 end
@@ -29,10 +30,12 @@ end
 # Insert initial (seed) data
 courses_table = DB.from(:courses)
 
-courses_table.insert(name: "Augusta National", 
+courses_table.insert(lat_lng: "33.5021365,-82.0248163",
+                    name: "Augusta National", 
                     city: "Augusta",
                     state: "GA")
 
-courses_table.insert(name: "Pebble Beach", 
+courses_table.insert(lat_lng: "36.5696553,-121.9519442",
+                    name: "Pebble Beach", 
                     city: "Pebble Beach",
                     state: "CA")

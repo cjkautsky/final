@@ -9,8 +9,11 @@
             <input type="text" class="form-control" list="courses" name="course">
 
             <datalist id="courses">
-            <option value="Augusta National">
-            <option value="Pebble Beach">
+                <% courses_table = DB.from(:courses) %>
+                <% for row in courses_table%>
+                    <% value = row[:name] %>
+                    <option value= <%= value %>>
+                <% end %>
             </datalist>
         </div>
 

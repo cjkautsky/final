@@ -1,6 +1,8 @@
-<% @lat_lng = [] %>
 <% results = Geocoder.search(params["course"]) %>
 <% @lat_lng = results.first.coordinates %>
+<% @lat = @lat_lng[0] %>
+<% @long = @lat_lng[1] %>
+<% @course_check = "#{@lat},#{@long}" %>
 <div class="container mt-5">
       <h1>Is this the correct course?</h1>
       <iframe
@@ -8,9 +10,15 @@
         height="450"
         frameborder="0" style="border:0"
         src="https://www.google.com/maps/embed/v1/place?key=<%=ENV["GOOGLE_MAPS_API_KEY"]%>
-          &q=<%= @lat_long %>&zoom=3" allowfullscreen>
+          &q=<%=@course_check%>&zoom=15" allowfullscreen>
       </iframe>
+      <form action="/courses/create_course" method="post">
+        <input type = "hidden" name = "course" value = <%= @course_check %> />
+        <div class="container-fluid">
+            <button type="submit" class="btn btn-success">That's right</button>
+         </div>
+      </form>
       <p>
-        <a href="/" class="btn btn-primary">Go again!</a>
+        <a href="/courses/new_course" class="btn btn-dark">Go back</a>
       </p>
 </div>

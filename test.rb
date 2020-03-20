@@ -14,6 +14,7 @@ before { puts; puts "--------------- NEW REQUEST ---------------"; puts }       
 after { puts; }                                                                       #
 #######################################################################################
 
-courses_table = DB.from(:course)
-course = "Pebble Beach"
-puts courses_table.where(name: course).to_a[0][:id]
+courses_table = DB.from(:courses)
+array = []
+array << courses_table
+puts array
