@@ -63,3 +63,7 @@
     font-weight: bold;
     font-size: 18px;
 }
+
+.small-margin {
+    margin-top: 10px;
+}

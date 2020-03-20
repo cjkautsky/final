@@ -6,3 +6,57 @@
     </div>
 </div>
 
+<div class="container mt-5 center">
+    <h1>Leaderboard</h1>
+</div>
+
+<div class="container mt-5">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Player</th>
+                <th scope="col">Course</th>
+                <th scope="col">Tees</th>
+                <th scope="col">City</th>
+                <th scope="col">Score</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% rounds_table = DB.from(:rounds) %>
+        <% courses_table = DB.from(:courses) %>
+        <% users_table = DB.from(:users) %>
+        <% count = 1 %>
+            <% for row in rounds_table%>
+                <tr>
+                    <th scope="row">
+                        <%= count %>
+                    </th>
+                    <td>
+                        <% user_name = row[:user_id] %>
+                        <%= users_table.where(id: user_name).to_a[0][:name] %>
+                    </td>
+                    <td>
+                        <% course_name = row[:course_id] %>
+                        <%= courses_table.where(id: course_name).to_a[0][:name] %>
+                    </td>
+                    <td>
+                        <%= row[:tees] %>
+                    </td>
+                    <td>
+                        <% course_name = row[:course_id] %>
+                        <%= courses_table.where(id: course_name).to_a[0][:city] %>
+                    </td>
+                    <td>
+                        <%= row[:score] %>
+                    </td>
+                    <td>
+                        <%= row[:date] %>
+                    </td>
+                </tr>
+                <% count += 1 %>
+            <% end %>
+        </tbody>
+    </table>
+<div>

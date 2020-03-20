@@ -10,7 +10,7 @@
 
             <datalist id="courses">
                 <% courses_table = DB.from(:courses) %>
-                <% for row in courses_table%>
+                <% for row in courses_table %>
                     <% value = row[:name] %>
                     <option value= <%= value %>>
                 <% end %>
